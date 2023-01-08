@@ -1,34 +1,50 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
+import { DismissableBlurb } from './DismissableBlurb';
 
+export const removeElement = () => {
+  const element = document.getElementById('blurb');
+  element?.remove();
+};
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Hello Vite + React!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <DismissableBlurb removeElement={removeElement}>
+      <Content />
+    </DismissableBlurb>
   );
 }
+
+export const Content = () => {
+  return (
+    <div
+      style={{
+        border: '1px solid gray',
+        padding: '20px',
+        borderRadius: '10px',
+        textAlign: 'left',
+      }}
+      id="blurb"
+    >
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          fontWeight: 'bold',
+        }}
+      >
+        <h3>Welcome to the new feed!</h3>
+        <p id="remove" style={{ cursor: 'pointer' }} onClick={removeElement}>
+          X
+        </p>
+      </div>
+      <p>
+        We'ew updating this to make it more interactive and useful. Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Praesentium non officiis et
+        expedita quam laudantium corporis vitae qui nobis incidunt?
+      </p>
+      <a href="https://example.com/feedback">Send feedback</a>
+    </div>
+  );
+};
 
 export default App;
