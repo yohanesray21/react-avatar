@@ -16,5 +16,5 @@ build an `<Avatar />` component similar to the one on Github
 - should combine JSDoc + TS to provide good documentation
 
 ```tsx
-<Avatar url="https://github.com/yohanesray21.png>
+<Avatar url="https://github.com/yohanesray.png>
 ```
